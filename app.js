@@ -6,7 +6,7 @@ window.onload = function () {
     }
   })
 
-  var data_source = 'https://newsapi.org/v1/articles?source=techcrunch&apiKey=001cafe578234c1b956e11ecb6073d46';
+  var data_source = 'https://newsapi.org/v1/articles?source=techcrunch&apiKey=API_KEY';
 
   var demoList = new Vue({
 
