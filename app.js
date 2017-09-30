@@ -13,8 +13,6 @@ window.onload = function () {
     el: '#demoList',
 
     data: {
-      currentBranch: 'dev',
-      items: null,
       articles: [],
     },
 
