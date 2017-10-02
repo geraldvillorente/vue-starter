@@ -39,10 +39,11 @@ window.onload = function () {
       itemsSearched: function() {
         var self = this;
         if (this.searchText == '') {
+          // Return all items if the search is empty.
           return this.articles;
         }
         return this.articles.filter(function(item) {
-          console.log(item);
+          // Implements case insensetive in search filter by using toLowerCase().
           return item.title.toLowerCase().indexOf(self.searchText.toLowerCase()) >= 0;
         });
       }
