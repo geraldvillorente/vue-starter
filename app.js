@@ -1,19 +1,14 @@
 window.onload = function () {
-  var greet = new Vue({
-    el: '#greet',
-    data: {
-      message: 'Hello Gerald'
-    }
-  })
-
-  var data_source = 'https://newsapi.org/v1/articles?source=techcrunch&apiKey=API_KEY';
+  var data_source = 'https://newsapi.org/v1/articles?source=techcrunch&apiKey=001cafe578234c1b956e11ecb6073d46';
 
   var demoList = new Vue({
 
     el: '#demoList',
 
     data: {
+      searchText: '',
       articles: [],
+      message: 'Hello Gerald',
     },
 
     created: function () {
@@ -32,6 +27,19 @@ window.onload = function () {
           this.articles = JSON.parse(response.bodyText).articles;
         }, response => {
           // error callback
+        });
+      }
+    },
+
+    computed: {
+      itemsSearched: function() {
+        var self = this;
+        if (this.searchText == '') {
+          return this.articles;
+        }
+        return this.articles.filter(function(item) {
+          console.log(item);
+          return item.title.indexOf(self.searchText) >= 0;
         });
       }
     }
