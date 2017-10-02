@@ -6,8 +6,11 @@ window.onload = function () {
     el: '#demoList',
 
     data: {
+      // Store the search items in searchText.
       searchText: '',
+      // Store the items fetched from the endpoint.
       articles: [],
+      // A custom variable.
       message: 'Hello Gerald',
     },
 
@@ -32,6 +35,7 @@ window.onload = function () {
     },
 
     computed: {
+      // For search filter.
       itemsSearched: function() {
         var self = this;
         if (this.searchText == '') {
@@ -39,7 +43,7 @@ window.onload = function () {
         }
         return this.articles.filter(function(item) {
           console.log(item);
-          return item.title.indexOf(self.searchText) >= 0;
+          return item.title.toLowerCase().indexOf(self.searchText.toLowerCase()) >= 0;
         });
       }
     }
