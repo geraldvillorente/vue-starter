@@ -12,6 +12,15 @@ window.onload = function () {
       articles: [],
       // A custom variable.
       message: 'Hello Gerald',
+
+      // For Vue Spinner.
+      color: '#3AB982',
+      size: '150px',
+      margin: '2px',
+      radius: '100%',
+      height: '50px',
+      width: '50px',
+      loading: true
     },
 
     created: function () {
@@ -28,6 +37,7 @@ window.onload = function () {
         // GET the data from the endpoint.
         this.$http.get(data_source).then(response => {
           this.articles = JSON.parse(response.bodyText).articles;
+          this.loading = false;
         }, response => {
           // @TODO: Improve error callback.
         });
@@ -47,7 +57,14 @@ window.onload = function () {
           return item.title.toLowerCase().indexOf(self.searchText.toLowerCase()) >= 0;
         });
       }
+    },
+
+    components: {
+      PulseLoader,
+      FadeLoader,
+      ClipLoader,
     }
   });
   Vue.config.devtools = true;
+  Vue.config.debug = true;
 };
