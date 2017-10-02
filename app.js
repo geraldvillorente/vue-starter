@@ -22,11 +22,11 @@ window.onload = function () {
 
     methods: {
       fetchData: function () {
-        // GET /someUrl
+        // GET the data from the endpoint.
         this.$http.get(data_source).then(response => {
           this.articles = JSON.parse(response.bodyText).articles;
         }, response => {
-          // error callback
+          // @TODO: Improve error callback.
         });
       }
     },
